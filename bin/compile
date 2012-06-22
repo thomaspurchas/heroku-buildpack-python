@@ -178,6 +178,11 @@ OUT=$(virtualenv --python $PYTHON_EXE --distribute --never-download --prompt='(v
   else
     VIRTUALENV_DIRS=$MODERN_VIRTUALENV_LOC
   fi
+  $VIRTUALENV_SRC_DIR = $MODERN_VIRTUALENV_LOC/../src
+  if [ -d "$VIRTUALENV_SRC_DIR" ]; then
+    echo " !     DELETING $VIRTUALENV_SRC_DIR"
+    rm -fr "$VIRTUALENV_SRC_DIR" &> /dev/null || true
+  fi
   for dir in $VIRTUALENV_DIRS; do
     rm -fr $dir &> /dev/null || true
   done  
